@@ -17,8 +17,22 @@ import os
 import time
 import sys
 
-print("Welcome to the random number generator!")
-filename = input("Type the filename of the class roster you would like to use: $ ")
+def getClassList():
+    classes = []
+    dir = os.getcwd()
+    for item in os.listdir(dir):
+        if not item.startswith(".") and item.endswith(".txt"):
+            name = item.split(".", 1) # at most [1] split is done
+            classes.append(name[0])
+    return classes
+
+print("    \nrandom name generator, by C. Hornbuckle [Oct.2020]")
+print("\nList of courses found:")
+print(getClassList())
+
+filename = input("Which class roster you would like to use?: $ ")
+filename += ".txt"
+print(filename)
 cmd = ''
 
 if os.path.exists(filename): # checks if file exists in the given path
@@ -30,8 +44,8 @@ if os.path.exists(filename): # checks if file exists in the given path
         if cmd.lower() == 'quit':
             print("--Closing program--")
             sys.exit(0)
-        print("The random number generator calls on...")
-        time.sleep(3)
+        print("The random name generator calls on...")
+        time.sleep(0.5)
 
         with open(filename) as f:
             try:
