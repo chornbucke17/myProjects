@@ -10,13 +10,16 @@
 # Program will ask the user to provide the name of a txt file to read from. Press
 # enter to select a new name from the list, or can type 'quit' to exit the program.
 #
-# Files should be in the same directory folder as rng.py
+# Files should be in the same directory folder as rng.py and have each name listed
+# on a separate line from one another. Make sure files end in '.txt'.
 
 import random
 import os
 import time
 import sys
+import curses
 
+# handles obtaining the list of classes from current working directory
 def getClassList():
     classes = []
     dir = os.getcwd()
@@ -26,17 +29,17 @@ def getClassList():
             classes.append(name[0])
     return classes
 
+# initial print statement
 print("    \nrandom name generator, by C. Hornbuckle [Oct.2020]")
 print("\nList of courses found:")
 print(getClassList())
 
 filename = input("Which class roster you would like to use?: $ ")
 filename += ".txt"
-print(filename)
 cmd = ''
 
 if os.path.exists(filename): # checks if file exists in the given path
-    print("Reading from %s...\n " % filename)
+    print("Reading from (%s)...\n " % filename)
 
     #--mainloop--#
     while True:
