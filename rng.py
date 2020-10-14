@@ -17,7 +17,6 @@ import random
 import os
 import time
 import sys
-import curses
 
 # handles obtaining the list of classes from current working directory
 def getClassList():
